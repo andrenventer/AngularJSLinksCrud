@@ -1,0 +1,66 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="page-header">
+
+                <p class="listHeader">Edit</p>
+
+            </div>
+
+            <form ng-submit="editLink(link)">
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Link"
+                           ng-model="link.link">
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Title"
+                           ng-model="link.heading">
+                </div>
+                <div class="form-group">
+                    <textarea type="text"
+                           class="form-control"
+                           placeholder="Body"
+                           rows="3"
+                           ng-model="link.content">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <textarea type="text"
+                              class="form-control"
+                              placeholder="Comment"
+                              rows="3"
+                              ng-model="link.comment">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="0"
+                           ng-model="link.votes">
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="2015-01-01"
+                           ng-model="link.date">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+
+            </form>
+
+            <hr>
+
+        </div>
+
+    </div>
+
+</div>
