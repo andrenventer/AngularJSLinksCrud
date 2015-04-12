@@ -19,4 +19,26 @@ app.controller('HomeController', [
             LinksAPI.update(link);
         };
 
+        $scope.search = '';
+
     }]);
+
+app.filter('dataFilter', function() {
+
+    return function(links, searchText) {
+
+        var regexp = new RegExp(searchText, 'i');
+
+        return links.filter(function(link) {
+            var found = false;
+            Object.keys(link).some(function(key,val) {
+                var match = regexp.exec(link[key]);
+                if (match !== null){
+                    found = true;
+                }
+                return found;
+            });
+            return found;
+        });
+    };
+});

@@ -5,11 +5,12 @@
         <div class="col-md-6 col-md-offset-3">
 
             <div class="page-header">
-                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links </a>
+                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links  </a>
+                <input type="text" data-ng-model="search" placeholder="Search" />
                 <a href="#/new" class="glyphicon glyphicon-pencil pull-right listHeader"> New</a>
             </div>
 
-            <div ng-repeat="link in links" class="listLinks">
+            <div data-ng-repeat="link in links | dataFilter:search" class="listLinks">
 
                 <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementVotes(link)">{{link.votes}}</span>
                 <a href="#/links/{{$index}}"><span class="glyphicon glyphicon-ok-circle"></span></a>
