@@ -5,8 +5,10 @@ app.controller('EditController', [
     'LinksAPI',
 
     function ($scope, $stateParams, $state, LinksAPI) {
+        
+        $scope.link = ($.grep(LinksAPI.links, function(e){ return e.id == $stateParams.id; }))[0];
 
-        $scope.link = LinksAPI.links[$stateParams.id];
+        console.log($scope.link);
 
         $scope.editLink = function (link) {
             LinksAPI.update(link).then(function () {
