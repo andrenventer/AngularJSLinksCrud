@@ -5,8 +5,9 @@
         <div class="col-md-6 col-md-offset-3">
 
             <div class="page-header">
-                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links  </a>
-                <input type="text" data-ng-model="search" placeholder="Search" />
+                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links</a>
+                    <input class="searchInput" type="text" data-ng-model="search" placeholder="Search"/>
+                <span><a href="#/home" class="glyphicon glyphicon-remove" ng-click="clearFilter()"></a></span>
                 <a href="#/new" class="glyphicon glyphicon-pencil pull-right listHeader"> New</a>
             </div>
 

@@ -21,6 +21,10 @@ app.controller('HomeController', [
 
         $scope.search = '';
 
+        $scope.clearFilter = function () {
+            $scope.search = '';
+        }
+
     }]);
 
 app.filter('dataFilter', function() {
