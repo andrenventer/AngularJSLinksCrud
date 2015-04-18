@@ -14,4 +14,8 @@ app.controller('EditController', [
             });
         };
 
+        $scope.decrementVotes = function () {
+            $scope.link.votes -= 1;
+        };
+
     }]);
