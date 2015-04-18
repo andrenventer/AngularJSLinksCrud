@@ -22,6 +22,10 @@ app.controller('HomeController', [
 
         $scope.search = '';
 
+        $scope.clearFilter = function(){
+            $scope.search = '';
+        };
+
         $scope.selectedLink = $sce.trustAsResourceUrl("http://think-a-doo.net/");
 
         $scope.select = function (selectedLink) {
