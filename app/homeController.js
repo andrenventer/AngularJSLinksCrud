@@ -1,8 +1,9 @@
 app.controller('HomeController', [
     '$scope',
+    '$sce',
     'LinksAPI',
 
-    function ($scope, LinksAPI) {
+    function ($scope, $sce, LinksAPI) {
 
         $scope.links = LinksAPI.links;
 
@@ -20,6 +21,12 @@ app.controller('HomeController', [
         };
 
         $scope.search = '';
+
+        $scope.selectedLink = $sce.trustAsResourceUrl("http://think-a-doo.net/");
+
+        $scope.select = function (link) {
+            $scope.selectedLink = $sce.trustAsResourceUrl(link.link);
+        };
 
     }]);
 

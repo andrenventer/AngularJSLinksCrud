@@ -2,11 +2,12 @@
 
     <div class="row">
 
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-4">
 
             <div class="page-header">
-                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links  </a>
-                <input type="text" data-ng-model="search" placeholder="Search" />
+                <a href="#/home" class="glyphicon glyphicon-repeat listHeader" ng-click="reload()"> Links</a>
+                <input class="searchInput" type="text" data-ng-model="search" placeholder="Search"/>
+                <span><a href="#/home" class="glyphicon glyphicon-remove" ng-click="clearFilter()"></a></span>
                 <a href="#/new" class="glyphicon glyphicon-pencil pull-right listHeader"> New</a>
             </div>
 
@@ -14,13 +15,23 @@
 
                 <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementVotes(link)">{{link.votes}}</span>
                 <a href="#/links/{{link.id}}"><span class="glyphicon glyphicon-ok-circle"></span></a>
-                <a ng-show="link.link" href="{{link.link}}" target="_blank">{{link.heading | limitTo:24 }}</a>
+                <a ng-show="link.link" href="#" ng-click="select(link)">{{link.heading | limitTo:24 }}</a>
                 <span ng-hide="link.link">{{link.heading}}</span>
                 <a href="#"><span class="glyphicon glyphicon-remove-circle" ng-click="deleteLink(link)"></span></a>
 
             </div>
 
             <hr>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="page-header">
+                <a href="{{selectedLink}}" target="_blank" class="listHeader">{{selectedLink}}</a>
+            </div>
+
+            <iframe src="{{selectedLink}}"></iframe>
 
         </div>
 
