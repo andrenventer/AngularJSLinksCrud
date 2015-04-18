@@ -29,7 +29,13 @@ app.controller('HomeController', [
         $scope.selectedLink = $sce.trustAsResourceUrl("http://think-a-doo.net/");
 
         $scope.select = function (selectedLink) {
-            $scope.selectedLink = $sce.trustAsResourceUrl(selectedLink.link);
+            var regexp = new RegExp('https://github.com', 'i');
+            var match = regexp.exec(selectedLink.link);
+            if (!match){
+                $scope.selectedLink = $sce.trustAsResourceUrl(selectedLink.link);
+            }else{
+                window.open(selectedLink.link,'_blank');
+            }
         };
 
     }]);
