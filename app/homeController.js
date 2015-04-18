@@ -24,8 +24,8 @@ app.controller('HomeController', [
 
         $scope.selectedLink = $sce.trustAsResourceUrl("http://think-a-doo.net/");
 
-        $scope.select = function (link) {
-            $scope.selectedLink = $sce.trustAsResourceUrl(link.link);
+        $scope.select = function (selectedLink) {
+            $scope.selectedLink = $sce.trustAsResourceUrl(selectedLink.link);
         };
 
     }]);
