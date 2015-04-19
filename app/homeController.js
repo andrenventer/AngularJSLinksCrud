@@ -68,9 +68,17 @@ app.service('domainService', [
         var o = {};
 
         o.domains = [
-            'https://github.com',
-            'http://stackoverflow.com/',
-            'https://msdn.microsoft.com/'
+            'github.com',
+            'stackoverflow.com/',
+            'apple.com',
+            'microsoft.com',
+            'msdn.microsoft.com/',
+            'technet.microsoft.com/',
+            'blogs.technet.com/',
+            'visualstudiogallery.msdn.microsoft.com/',
+            'java.dzone.com/',
+            'www.npmjs.com/',
+            'support.apple.com/',
         ];
 
         o.checkDomain = function (url) {
