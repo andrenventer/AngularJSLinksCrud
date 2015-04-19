@@ -2,8 +2,9 @@ app.controller('HomeController', [
     '$scope',
     '$sce',
     'LinksAPI',
+    'domainService',
 
-    function ($scope, $sce, LinksAPI) {
+    function ($scope, $sce, LinksAPI, domainService) {
 
         $scope.links = LinksAPI.links;
 
@@ -22,35 +23,35 @@ app.controller('HomeController', [
 
         $scope.search = '';
 
-        $scope.clearFilter = function(){
+        $scope.clearFilter = function () {
             $scope.search = '';
         };
 
         $scope.selectedLink = $sce.trustAsResourceUrl("http://think-a-doo.net/");
 
         $scope.select = function (selectedLink) {
-            var regexp = new RegExp('https://github.com', 'i');
-            var match = regexp.exec(selectedLink.link);
-            if (!match){
+            var answer = domainService.checkDomain(selectedLink.link);
+            console.log(answer);
+            if (answer) {
+                window.open(selectedLink.link, '_blank');
+            } else {
                 $scope.selectedLink = $sce.trustAsResourceUrl(selectedLink.link);
-            }else{
-                window.open(selectedLink.link,'_blank');
             }
         };
 
     }]);
 
-app.filter('dataFilter', function() {
+app.filter('dataFilter', [function () {
 
-    return function(links, searchText) {
+    return function (links, searchText) {
 
         var regexp = new RegExp(searchText, 'i');
 
-        return links.filter(function(link) {
+        return links.filter(function (link) {
             var found = false;
-            Object.keys(link).some(function(key,val) {
+            Object.keys(link).some(function (key, val) {
                 var match = regexp.exec(link[key]);
-                if (match !== null){
+                if (match !== null) {
                     found = true;
                 }
                 return found;
@@ -58,4 +59,37 @@ app.filter('dataFilter', function() {
             return found;
         });
     };
-});
+}]);
+
+app.service('domainService', [
+
+    function () {
+
+        var o = {};
+
+        o.domains = [
+            'https://github.com',
+            'http://stackoverflow.com/',
+            'https://msdn.microsoft.com/'
+        ];
+
+        o.checkDomain = function (url) {
+            var found = false;
+            o.domains.some(function (domain) {
+                var regexp = new RegExp(domain, 'i');
+                var match = regexp.exec(url);
+                if (match !== null) {
+                    found = true;
+                }
+                return found;
+            });
+            return found;
+        };
+
+        return o;
+
+    }]);
+
+
+
+
